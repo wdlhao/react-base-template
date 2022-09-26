@@ -1,20 +1,22 @@
 import { Suspense, lazy } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route,useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const TestPage = lazy(() =>
   import("../Test")
 );
 
-// Create a client
-const queryClient = new QueryClient();
 
 function App() {
+  let navigate = useNavigate();
+  useEffect(() => {
+    navigate("/test");
+  }, []);
+
   return (
     <Suspense>
       <Routes>
-        <Route path="/">
-          <Route path="test" element={<TestPage />} />
-        </Route>
+        <Route path="/test" element={<TestPage />} />
       </Routes>
     </Suspense>
   );
