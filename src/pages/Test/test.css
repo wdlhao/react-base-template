@@ -1,0 +1,19 @@
+.TestBox{
+    padding: 20px;
+    box-sizing: border-box;
+}
+.TestBox .dataBox{
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    border: 1px solid green;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.TestBox .getTitle{
+    font-size: 16px;
+    font-weight: bolder;
+}
+.TestBox .dataBox .eleBox{
+    display: flex;
+}
