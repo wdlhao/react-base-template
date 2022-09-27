@@ -2,15 +2,17 @@ import axios from "axios";
 // import {  ElMessage } from "element-plus";
 
 const service = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
+  // baseURL:  process.env.REACT_APP_BASE_URL,
+  baseURL: "/",
   timeout: 30000,
 });
-
 service.interceptors.request.use(
   (config) => {
     let token = sessionStorage.getItem("Token");
     config.headers = { 
-      Token: token 
+        // Authorization: `Bearer ${auth.getToken()}`,
+      "Accept": "application/json",
+      "Content-Type": "application/json",
     };
     return config;
   },
@@ -21,7 +23,7 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
   (response) => {
-    if (response.status == 200) {
+    if (response.status === 200) {
       return Promise.resolve(response);
     } else {
       return Promise.reject(response);

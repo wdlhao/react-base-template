@@ -1,11 +1,16 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy,useEffect } from "react";
 import { Routes, Route,useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const IndexPage = lazy(() =>
+  import("../Index")
+);
 
 const TestPage = lazy(() =>
   import("../Test")
 );
 
+const queryClient = new QueryClient();
 
 function App() {
   let navigate = useNavigate();
@@ -15,9 +20,14 @@ function App() {
 
   return (
     <Suspense>
+      <QueryClientProvider client={queryClient}>
       <Routes>
-        <Route path="/test" element={<TestPage />} />
+        {/* <Route path="/"> */}
+          <Route path="/" element={<IndexPage />} />
+          <Route path="/test" element={<TestPage />} />
+        {/* </Route> */}
       </Routes>
+      </QueryClientProvider>
     </Suspense>
   );
 }

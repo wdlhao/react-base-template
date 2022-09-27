@@ -6,9 +6,9 @@ import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 
 import * as urls from '@/api/url.js'
-import { commonRequest } from '@/utils/request.js'
+import { Request } from '@/core/request.js'
 React.Urls = urls;
-React.Request = commonRequest;
+React.Request = Request;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

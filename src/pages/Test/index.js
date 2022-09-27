@@ -1,45 +1,19 @@
-// import { Login,Logout,GetAllDicts,GetAllProvince } from "@/api/url.js";
 import React from "react";
+import useQYHYJBXX from "@/hooks/useQYHYJBXX"; // get
+import useGSLHYXX from "@/hooks/useGSLHYXX";   // post
 
-function Test() {
-  console.log(React.Urls);
-  console.log(React.Request );
-
-  const searchHandle = () => {
-    //  let arg = {
-    //    url: React.Urls.Login,
-    //    method: "get",
-    //    data: searchForm,
-    //  };
-    //  React.Request(arg).then((res) => {
-    //    loading.value = false;
-    //    searchForm.total = res.Total;
-    //    tableData.value = res.List?res.List:[];
-    //  }).catch(err=>{
-    //    loading.value = false;
-    //  })
+export default function Test() {
+  let id = 49223;
+  let GSLHParams = {
+    page:1,
+    pagesize: 10,
+    id:id,
+    keyword:"",
   }
-  // 保存
-  const saveEntranceExamRecords = () => {
-    // return new Promise((resolve) => {
-    //   let arg = {
-    //     url: _this.$urls.SaveEntranceExamRecords,
-    //     method: "post",
-    //     data: recordsForm,
-    //   };
-    //   mainLoading.value = false;
-    //   _glob.Request(arg).then((res) => {
-    //     mainLoading.value = true;
-    //     ElMessage({type: "success",message: "保存成功~"});
-    //     dlgParams.show = false;
-    //     resolve(res);
-    //   }).catch((err) => {
-    //     mainLoading.value = true;
-    //     dlgParams.show = false;
-    //   })
-    // });
-  }
-
+  const { data: basicData } = useQYHYJBXX(id);
+  const { data: basicList } = useGSLHYXX(GSLHParams);
+  // console.log('test---basicData----',basicData);
+  // console.log('test---basicList----',basicList);
 
   return (
     <div className="Test">
@@ -47,5 +21,3 @@ function Test() {
     </div>
   );
 }
-
-export default Test;
