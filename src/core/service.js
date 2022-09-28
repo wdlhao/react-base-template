@@ -7,7 +7,7 @@ const service = axios.create({
 });
 service.interceptors.request.use(
   (config) => {
-    let token = sessionStorage.getItem("Token");
+    // let token = sessionStorage.getItem("Token");
     config.headers = { 
       // Authorization: token,
       "Accept": "application/json",
